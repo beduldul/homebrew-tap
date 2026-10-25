@@ -1,13 +1,13 @@
 cask "ai-policy" do
-  version "0.2.1"
+  version "0.3.0"
 
   on_arm do
-    sha256 "9a7d3337e89c9868f18370173493ac85f483356e7804d2520a5e7bf13053d804"
+    sha256 "8ddd0d7cb14728b8c2dc14318c4730e295af2a2df4ea9ed1f9c22baee716f0cd"
     url "https://github.com/beduldul/ai-policy/releases/download/v#{version}/ai-policy_darwin_arm64"
   end
 
   on_intel do
-    sha256 "d94eecb9d976f05895ef82822c2401691271029608b452595952f04f757f439d"
+    sha256 "371902940a61edcbd1f1cc3d80df9ab8e71fd7279df4dbefa78085bf2f40f974"
     url "https://github.com/beduldul/ai-policy/releases/download/v#{version}/ai-policy_darwin_amd64"
   end
 
