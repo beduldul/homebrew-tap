@@ -1,0 +1,29 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  style:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: brew style Casks/ai-policy.rb
+
+  install:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: install from this checkout and run it
+        run: |
+          brew tap beduldul/tap "$GITHUB_WORKSPACE"
+          brew install --cask ai-policy
+          ai-policy --version
+          # FORBIDDEN exits 20; the shell must not treat that as a crash.
+          mkdir -p /tmp/policy && printf 'AI-generated pull requests are closed on sight.\n' > /tmp/policy/CONTRIBUTING.md
+          ai-policy --path /tmp/policy || test $? -eq 20
