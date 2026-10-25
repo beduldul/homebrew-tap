@@ -1,8 +1,8 @@
 class AiPolicy < Formula
   desc "Check whether a repository accepts AI-assisted contributions"
   homepage "https://github.com/beduldul/ai-policy"
-  url "https://github.com/beduldul/ai-policy/archive/refs/tags/v0.2.0.tar.gz"
-  sha256 "d21d8d6c5bb0caed86b3ca5f0239d36b3d1697462034a05fae38a6657330c58e"
+  url "https://github.com/beduldul/ai-policy/archive/refs/tags/v0.2.1.tar.gz"
+  sha256 "57c47f6b5374b5b9cb6d13c0edb90f6ff9b62b13c4f8a203255aab0d364a6c96"
   license "MIT"
   head "https://github.com/beduldul/ai-policy.git", branch: "main"
 
