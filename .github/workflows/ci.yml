@@ -22,6 +22,9 @@ jobs:
       - name: install from this checkout and run it
         run: |
           brew tap beduldul/tap "$GITHUB_WORKSPACE"
+          # Homebrew 7 refuses to load a cask from a third-party tap until it is
+          # trusted; interactive installs prompt, CI has nobody to ask.
+          brew trust --cask beduldul/tap/ai-policy
           brew install --cask ai-policy
           ai-policy --version
           # FORBIDDEN exits 20; the shell must not treat that as a crash.

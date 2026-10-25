@@ -8,6 +8,14 @@ Homebrew packages for [beduldul](https://github.com/beduldul)'s tools.
 brew install beduldul/tap/ai-policy
 ```
 
+Homebrew 7 asks whether to trust a cask from a third-party tap. If you would
+rather answer that up front:
+
+```sh
+brew trust --cask beduldul/tap/ai-policy
+brew install --cask beduldul/tap/ai-policy
+```
+
 ## Packages
 
 | Package | What it does |
