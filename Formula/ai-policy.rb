@@ -1,15 +1,37 @@
 class AiPolicy < Formula
   desc "Check whether a repository accepts AI-assisted contributions"
   homepage "https://github.com/beduldul/ai-policy"
-  url "https://github.com/beduldul/ai-policy/archive/refs/tags/v0.2.1.tar.gz"
-  sha256 "57c47f6b5374b5b9cb6d13c0edb90f6ff9b62b13c4f8a203255aab0d364a6c96"
+  version "0.2.1"
   license "MIT"
-  head "https://github.com/beduldul/ai-policy.git", branch: "main"
 
-  depends_on "go" => :build
+  # Prebuilt binaries, so installing does not drag in a Go toolchain. Only the
+  # platform differs between them; the install step renames whichever arrived.
+  on_macos do
+    on_arm do
+      url "https://github.com/beduldul/ai-policy/releases/download/v0.2.1/ai-policy_darwin_arm64"
+      sha256 "9a7d3337e89c9868f18370173493ac85f483356e7804d2520a5e7bf13053d804"
+    end
+
+    on_intel do
+      url "https://github.com/beduldul/ai-policy/releases/download/v0.2.1/ai-policy_darwin_amd64"
+      sha256 "d94eecb9d976f05895ef82822c2401691271029608b452595952f04f757f439d"
+    end
+  end
+
+  on_linux do
+    on_arm do
+      url "https://github.com/beduldul/ai-policy/releases/download/v0.2.1/ai-policy_linux_arm64"
+      sha256 "f6fe6e15e550b3129da855d3ab86ba647058c6cab08f138f33ebd2e12f9ba802"
+    end
+
+    on_intel do
+      url "https://github.com/beduldul/ai-policy/releases/download/v0.2.1/ai-policy_linux_amd64"
+      sha256 "c6bb6e0ec69d27701697423f9f9c33d53a878974eae7f22c19fc337a19a2fe13"
+    end
+  end
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w"), "."
+    bin.install Dir["ai-policy_*"].first => "ai-policy"
   end
 
   test do
